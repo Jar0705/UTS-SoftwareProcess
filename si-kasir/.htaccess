@@ -1,0 +1,21 @@
+RewriteEngine On
+RewriteBase /
+
+# Redirect root to index.php
+DirectoryIndex index.php
+
+# Allow access to assets
+RewriteCond %{REQUEST_URI} ^/assets/
+RewriteRule ^ - [L]
+
+# Allow access to modules
+RewriteCond %{REQUEST_URI} ^/modules/
+RewriteRule ^ - [L]
+
+# Allow access to database
+RewriteCond %{REQUEST_URI} ^/database/
+RewriteRule ^ - [L]
+
+# Prevent access to config and includes directly
+RewriteCond %{REQUEST_URI} ^/(config|includes)/
+RewriteRule ^ - [F,L]
